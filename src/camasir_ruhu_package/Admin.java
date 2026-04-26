@@ -1,5 +1,5 @@
 package camasir_ruhu_package;
 
-public class Admin {
+public class Admin extends Kullanici {
 
 }

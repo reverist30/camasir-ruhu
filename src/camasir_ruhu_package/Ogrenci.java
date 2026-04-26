@@ -1,5 +1,5 @@
 package camasir_ruhu_package;
 
-public class Ogrenci {
+public class Ogrenci extends Kullanici{
 
 }
