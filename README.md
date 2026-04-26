@@ -1,3 +1,3 @@
 # camasir-ruhu
-Çamaşır randevu sistemi
+Çamaşır randevu sistemi.
 Umarım daha rahat bir şekilde çamaşırlarımızı yıkayabiliriz!!
