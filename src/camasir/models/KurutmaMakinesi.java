@@ -1,4 +1,4 @@
-package camasir_ruhu_package;
+package camasir.models;
 
 public class KurutmaMakinesi extends Makine{
 	private String kurutmaDerecesi;

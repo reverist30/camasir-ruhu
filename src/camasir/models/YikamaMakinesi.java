@@ -1,4 +1,4 @@
-package camasir_ruhu_package;
+package camasir.models;
 
 public class YikamaMakinesi extends Makine {
 	private int maxDeterjanMiktari;

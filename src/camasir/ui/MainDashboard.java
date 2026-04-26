@@ -1,4 +1,4 @@
-package camasir_ruhu_package;
+package camasir.ui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
