@@ -1,6 +1,6 @@
 package camasir.models;
 
-public class KurutmaMakinesi extends Makine{
+public class KurutmaMakinesi extends Makine {
 	private String kurutmaDerecesi;
 	private String tipi;
 	public KurutmaMakinesi(int sicaklik, int devirSayisi, String kurutmaDerecesi, String tipi, double kapasite) {

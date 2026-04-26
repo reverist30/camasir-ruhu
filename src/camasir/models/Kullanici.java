@@ -14,12 +14,13 @@ public abstract class Kullanici {
 		return TC;
 	}
 	public void setTC(String tC) {
-		if(tC != null &&tC.length()== 11 && tC.matches("\\d+")) {
+		if(tC != null && tC.length() == 11 && tC.matches("\\d+")) {
 			TC = tC;
-		}else {
+		} else {
 			System.out.println("TC kimlik numarasi 11 karakter olmak zorundadir!");
 		}
 	}
+	
 	public String getTelNo() {
 		return telNo;
 	}
@@ -33,6 +34,5 @@ public abstract class Kullanici {
 		this.tamIsim = tamIsim;
 	}
 	
-
-
+	
 }
