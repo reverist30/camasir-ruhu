@@ -4,12 +4,12 @@ public abstract class Makine {
 	
 	private int sicaklik;
 	private int devirSayisi;
-	private double kapasite;
+	private String yikamaRengi;
 
-	public Makine(int sicaklik, int devirSayisi, double kapasite) {
+	public Makine(int sicaklik, int devirSayisi, String yikamaRengi) {
 		this.sicaklik = sicaklik;
 		this.devirSayisi = devirSayisi;
-		this.kapasite = kapasite;
+		this.yikamaRengi = yikamaRengi;
 	}
 
 	public int getSicaklik() {
@@ -28,12 +28,12 @@ public abstract class Makine {
 		this.devirSayisi = devirSayisi;
 	}
 
-	public double getKapasite() {
-		return kapasite;
+	public String getYikamaRengi() {
+		return yikamaRengi;
 	}
 
-	public void setKapasite(double kapasite) {
-		this.kapasite = kapasite;
+	public void setYikamaRengi(String yikamaRengi) {
+		this.yikamaRengi = yikamaRengi;
 	}
 	
 	

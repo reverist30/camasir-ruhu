@@ -25,7 +25,11 @@ public abstract class Kullanici {
 		return telNo;
 	}
 	public void setTelNo(String telNo) {
-		this.telNo = telNo;
+		if(telNo != null && telNo.length() == 10 && telNo.matches("\\d+")) {
+			this.telNo = telNo;
+		}else {
+			System.out.println("Telefon numarasi 10 karakter olmak zorundadir!");
+		}
 	}
 	public String getTamIsim() {
 		return tamIsim;
