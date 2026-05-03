@@ -16,6 +16,9 @@ public class Memur extends Kullanici {
 	public void setPersonelID(String personelID) {
 		this.personelID = personelID;
 	}
-	
+	public void ekraniCalistir() {
+		
+		
+	}
 
 }

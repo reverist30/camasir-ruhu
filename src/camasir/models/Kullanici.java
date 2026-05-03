@@ -38,5 +38,5 @@ public abstract class Kullanici {
 		this.tamIsim = tamIsim;
 	}
 	
-	
+	abstract void ekraniCalistir();
 }

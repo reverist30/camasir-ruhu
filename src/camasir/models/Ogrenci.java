@@ -21,4 +21,8 @@ public class Ogrenci extends Kullanici {
 	public void setRandevuHakkı(boolean randevuHakkı) {
 		this.randevuHakkı = randevuHakkı;
 	}
+	public void ekraniCalistir() {
+		
+		
+	}
 }
