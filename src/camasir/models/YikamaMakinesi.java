@@ -4,7 +4,7 @@ public class YikamaMakinesi extends Makine {
 	private int maxDeterjanMiktari;
 
 	public YikamaMakinesi(int sicaklik, int devirSayisi, String yikamaRengi, int maxDeterjanMiktari) {
-		super(sicaklik, devirSayisi,  yikamaRengi);
+		super(sicaklik, devirSayisi, yikamaRengi);
 		this.maxDeterjanMiktari = maxDeterjanMiktari;
 	}
 
