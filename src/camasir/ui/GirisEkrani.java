@@ -4,8 +4,8 @@ import javax.swing.*;
 public class GirisEkrani extends JFrame {
 	public GirisEkrani() {
 		 this.setTitle("Camasir Randevu Sistemi");   
-		 this.setSize(1000,600);                //pencerenin boyutları için
-		 setLocationRelativeTo(null);         //pencerenin ekranın tam ortasında olması için
+		 this.setSize(1000,600);                //pencerenin boyutlari için
+		 setLocationRelativeTo(null);         //pencerenin ekranin tam ortasinda olmasi icin
 		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 this.setLayout(null);
 		 JTextField[] txtGiris = new JTextField[2];

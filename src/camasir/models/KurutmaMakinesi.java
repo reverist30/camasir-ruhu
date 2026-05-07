@@ -3,12 +3,18 @@ package camasir.models;
 public class KurutmaMakinesi extends Makine {
 	private String kurutmaDerecesi;
 	private String tipi;
-	public KurutmaMakinesi(int sicaklik, int devirSayisi, String kurutmaDerecesi, String tipi, String yikamaRengi) {
-		super(sicaklik, devirSayisi, yikamaRengi);
+	
+	public KurutmaMakinesi(int sicaklik, int sure, int kapasite, int devir, String mod, String yikamaRengi,
+			String kurutmaDerecesi, String tipi) {
+		super(sicaklik, sure, kapasite, devir, mod, yikamaRengi);
 		this.kurutmaDerecesi = kurutmaDerecesi;
 		this.tipi = tipi;
 	}
 	
+	@Override
+	public void calistir() {
+		
+	}
 	public String getKurutmaDerecesi() {
 		return kurutmaDerecesi;
 	}
@@ -21,8 +27,6 @@ public class KurutmaMakinesi extends Makine {
 	public void setTipi(String tipi) {
 		this.tipi = tipi;
 	}
-	
-	
 	
 
 }

@@ -1,4 +1,4 @@
-package camasir.models;
+package camasir.interfaces;
 
 public interface IMakine {
 
