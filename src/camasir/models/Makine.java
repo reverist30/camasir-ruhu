@@ -3,15 +3,26 @@ package camasir.models;
 public abstract class Makine {
 	
 	private int sicaklik;
-	private int devirSayisi;
-	private String yikamaRengi;
-
-	public Makine(int sicaklik, int devirSayisi, String yikamaRengi) {
-		this.sicaklik = sicaklik;
-		this.devirSayisi = devirSayisi;
-		this.yikamaRengi = yikamaRengi;
+	private int sure;
+	private int kapasite;
+	private int devir;
+	private String mod;
+	private String renk;
+	
+	public Makine() {
 	}
 
+	public Makine(int sicaklik, int sure, int kapasite, int devir, String mod, String renk) {
+		this.sicaklik = sicaklik;
+		this.sure = sure;
+		this.kapasite = kapasite;
+		this.devir = devir;
+		this.mod = mod;
+		this.renk = renk;
+	}
+
+	public abstract void calistir();
+	
 	public int getSicaklik() {
 		return sicaklik;
 	}
@@ -20,22 +31,44 @@ public abstract class Makine {
 		this.sicaklik = sicaklik;
 	}
 
-	public int getDevirSayisi() {
-		return devirSayisi;
+	public int getDevir() {
+		return devir;
 	}
 
-	public void setDevirSayisi(int devirSayisi) {
-		this.devirSayisi = devirSayisi;
+	public void setDevir(int devir) {
+		this.devir = devir;
 	}
 
-	public String getYikamaRengi() {
-		return yikamaRengi;
+	public String getRenk() {
+		return renk;
 	}
 
-	public void setYikamaRengi(String yikamaRengi) {
-		this.yikamaRengi = yikamaRengi;
+	public void setRenk(String renk) {
+		this.renk = renk;
 	}
-	
-	
+
+	public String getMod() {
+		return mod;
+	}
+
+	public void setMod(String mod) {
+		this.mod = mod;
+	}
+
+	public int getSure() {
+		return sure;
+	}
+
+	public void setSure(int sure) {
+		this.sure = sure;
+	}
+
+	public int getKapasite() {
+		return kapasite;
+	}
+
+	public void setKapasite(int kapasite) {
+		this.kapasite = kapasite;
+	}
 
 }

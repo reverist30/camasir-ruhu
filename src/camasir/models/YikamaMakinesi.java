@@ -1,20 +1,29 @@
 package camasir.models;
 
-public class YikamaMakinesi extends Makine {
-	private int maxDeterjanMiktari;
-
-	public YikamaMakinesi(int sicaklik, int devirSayisi, String yikamaRengi, int maxDeterjanMiktari) {
-		super(sicaklik, devirSayisi, yikamaRengi);
-		this.maxDeterjanMiktari = maxDeterjanMiktari;
+public class YikamaMakinesi extends Makine{
+	private int deterjanMiktari;
+	
+	public YikamaMakinesi() {
+		super();
 	}
 
-	public int getMaxDeterjanMiktari() {
-		return maxDeterjanMiktari;
+	public YikamaMakinesi(int sicaklik, int sure, int kapasite, int devir, String mod, String renk,
+			int deterjanMiktari) {
+		super(sicaklik, sure, kapasite, devir, mod, renk);
+		this.deterjanMiktari = deterjanMiktari;
 	}
 
-	public void setMaxDeterjanMiktari(int maxDeterjanMiktari) {
-		this.maxDeterjanMiktari = maxDeterjanMiktari;
+	@Override
+	public void calistir() {
+		
 	}
 	
+	public int getdeterjanMiktari() {
+		return deterjanMiktari;
+	}
+
+	public void setdeterjanMiktari(int deterjanMiktari) {
+		this.deterjanMiktari = deterjanMiktari;
+	}
 
 }

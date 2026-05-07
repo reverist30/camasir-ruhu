@@ -1,15 +1,22 @@
 package camasir.ui;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+
 public class GirisEkrani extends JFrame {
 	public GirisEkrani() {
 		 this.setTitle("Camasir Randevu Sistemi");   
-		 this.setSize(1000,600);                //pencerenin boyutları için
-		 setLocationRelativeTo(null);         //pencerenin ekranın tam ortasında olması için
+		 this.setSize(1000,600);                //pencerenin boyutlari için
+		 setLocationRelativeTo(null);         //pencerenin ekranin tam ortasinda olmasi icin
 		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 this.setLayout(null);
 		 this.setBackground(Color.BLUE);

@@ -1,0 +1,125 @@
+package camasir.ui;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+
+import camasir.models.KurutmaMakinesi;
+import camasir.models.YikamaMakinesi;
+
+public class MakineKontrolPaneli extends JFrame {
+
+    // Modeller
+    private YikamaMakinesi yikamaModel = new YikamaMakinesi();
+    private KurutmaMakinesi kurutmaModel = new KurutmaMakinesi(40, 30, 5, 0, "Standart", "Beyaz", "Dolap Kurulugu", "Isi Pompali");
+
+    // Ortak Bilesenler
+    private JComboBox<String> cbMakineTuru, cbMod;
+    private JComboBox<Integer> cbSicaklik;
+    private CardLayout cardLayout = new CardLayout();
+    private JPanel dinamikPanel;
+
+    // Yikamaya Ozel
+    private JComboBox<Integer> cbDevir;
+    
+    // Kurutmaya Ozel
+    private JComboBox<String> cbKurutmaDerecesi;
+
+    public MakineKontrolPaneli() {
+        setTitle("Çamaşır Ruhu v1.0");
+        setSize(400, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout(10, 10));
+
+        // --- UST ALAN (Secimler) ---
+        JPanel ustPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+        ustPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        ustPanel.add(new JLabel("Makine Türü:"));
+        cbMakineTuru = new JComboBox<>(new String[]{"Yıkama Makinesi", "Kurutma Makinesi"});
+        ustPanel.add(cbMakineTuru);
+
+        ustPanel.add(new JLabel("Program Modu:"));
+        cbMod = new JComboBox<>(new String[]{"Pamuklu", "Sentetik", "Hızlı", "Eko"});
+        ustPanel.add(cbMod);
+
+        ustPanel.add(new JLabel("Sıcaklık (°C):"));
+        cbSicaklik = new JComboBox<>(new Integer[]{30, 40, 60, 90});
+        ustPanel.add(cbSicaklik);
+
+        add(ustPanel, BorderLayout.NORTH);
+
+        // --- ORTA ALAN (Dinamik Degisen Kisim) ---
+        dinamikPanel = new JPanel(cardLayout);
+        
+        // Yikama Sayfasi
+        JPanel pYikama = new JPanel(new FlowLayout());
+        pYikama.setBorder(new TitledBorder("Yıkama Ayarları"));
+        pYikama.add(new JLabel("Sıkma Devri:"));
+        cbDevir = new JComboBox<>(new Integer[]{600, 800, 1000, 1200});
+        pYikama.add(cbDevir);
+        
+        // Kurutma Sayfasi
+        JPanel pKurutma = new JPanel(new FlowLayout());
+        pKurutma.setBorder(new TitledBorder("Kurutma Ayarları"));
+        pKurutma.add(new JLabel("Kuruluk Seviyesi:"));
+        cbKurutmaDerecesi = new JComboBox<>(new String[]{"Ütü Kuruluğu", "Dolap Kuruluğu", "Ekstra Kuru"});
+        pKurutma.add(cbKurutmaDerecesi);
+
+        dinamikPanel.add(pYikama, "Yikama");
+        dinamikPanel.add(pKurutma, "Kurutma");
+        add(dinamikPanel, BorderLayout.CENTER);
+
+        // --- ALT ALAN (Butonlar) ---
+        JPanel altPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        altPanel.setBorder(new EmptyBorder(0, 10, 10, 10));
+
+        JButton btnHizliAyar = new JButton("Hızlı Ayar (Varsayılan)");
+        JButton btnBaslat = new JButton("SİSTEMİ BAŞLAT");
+        btnBaslat.setBackground(new Color(144, 238, 144));
+
+        altPanel.add(btnHizliAyar);
+        altPanel.add(btnBaslat);
+        add(altPanel, BorderLayout.SOUTH);
+
+        // --- OLAYLAR (Listeners) ---
+
+        // Makine turu degisince paneli degistir
+        cbMakineTuru.addActionListener(e -> {
+            if (cbMakineTuru.getSelectedIndex() == 0) cardLayout.show(dinamikPanel, "Yikama");
+            else cardLayout.show(dinamikPanel, "Kurutma");
+        });
+
+        // Hizli Ayar Butonu
+        btnHizliAyar.addActionListener(e -> {
+            cbSicaklik.setSelectedItem(40);
+            cbMod.setSelectedIndex(0);
+            if (cbMakineTuru.getSelectedIndex() == 0) cbDevir.setSelectedItem(800);
+            JOptionPane.showMessageDialog(this, "Varsayılan ayarlar yüklendi.");
+        });
+
+        // Baslat Butonu
+        btnBaslat.addActionListener(e -> {
+            // Buradaki verileri alip modellere aktarir
+            String mesaj = cbMakineTuru.getSelectedItem() + " başlatılıyor...";
+            JOptionPane.showMessageDialog(this, mesaj);
+        });
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new MakineKontrolPaneli().setVisible(true));
+    }
+}
