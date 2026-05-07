@@ -1,6 +1,6 @@
 package camasir.ui;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 public class Memur_Paneli extends JFrame {
 	public Memur_Paneli() {

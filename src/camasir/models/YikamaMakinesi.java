@@ -1,11 +1,15 @@
 package camasir.models;
 
-public class YikamaMakinesi extends Makine {
+public class YikamaMakinesi extends Makine{
 	private int deterjanMiktari;
+	
+	public YikamaMakinesi() {
+		super();
+	}
 
-	public YikamaMakinesi(int sicaklik, int sure, int kapasite, int devir, String mod, String yikamaRengi,
+	public YikamaMakinesi(int sicaklik, int sure, int kapasite, int devir, String mod, String renk,
 			int deterjanMiktari) {
-		super(sicaklik, sure, kapasite, devir, mod, yikamaRengi);
+		super(sicaklik, sure, kapasite, devir, mod, renk);
 		this.deterjanMiktari = deterjanMiktari;
 	}
 

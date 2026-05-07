@@ -1,6 +1,6 @@
 package camasir.ui;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 public class Ogrenci_Paneli extends JFrame {
 	public Ogrenci_Paneli() {

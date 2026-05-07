@@ -7,15 +7,18 @@ public abstract class Makine {
 	private int kapasite;
 	private int devir;
 	private String mod;
-	private String yikamaRengi;
+	private String renk;
+	
+	public Makine() {
+	}
 
-	public Makine(int sicaklik, int sure, int kapasite, int devir, String mod, String yikamaRengi) {
+	public Makine(int sicaklik, int sure, int kapasite, int devir, String mod, String renk) {
 		this.sicaklik = sicaklik;
 		this.sure = sure;
 		this.kapasite = kapasite;
 		this.devir = devir;
 		this.mod = mod;
-		this.yikamaRengi = yikamaRengi;
+		this.renk = renk;
 	}
 
 	public abstract void calistir();
@@ -36,12 +39,12 @@ public abstract class Makine {
 		this.devir = devir;
 	}
 
-	public String getYikamaRengi() {
-		return yikamaRengi;
+	public String getRenk() {
+		return renk;
 	}
 
-	public void setYikamaRengi(String yikamaRengi) {
-		this.yikamaRengi = yikamaRengi;
+	public void setRenk(String renk) {
+		this.renk = renk;
 	}
 
 	public String getMod() {
