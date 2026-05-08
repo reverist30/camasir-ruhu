@@ -1,6 +1,7 @@
 package camasir.ui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,8 +31,11 @@ public class GirisEkrani extends JFrame {
 		 this.add(txtGiris[1]);
 		 
 		 JButton btnGiris = new JButton("Giris");
-		 btnGiris.setBounds(420,220, 120,45);
-		 btnGiris.setBackground(Color.GREEN);
+		 btnGiris.setForeground(Color.BLACK);
+		 btnGiris.setFont(new Font("Arial", Font.BOLD, 14));
+		 btnGiris.setBounds(420,250, 120,45);
+		 btnGiris.setBackground(new Color(100, 200, 120));
+		 btnGiris.setFocusPainted(false);
 		 this.add(btnGiris);
 		 
 		 JLabel[] lblGiris = new JLabel[3];
@@ -39,9 +43,11 @@ public class GirisEkrani extends JFrame {
 		 lblGiris[1]= new JLabel("TC kimlik numaranızı yazınız");
 		 lblGiris[2]= new JLabel("");
 		 lblGiris[2].setForeground(Color.RED);        //yazının rengi 
+		 lblGiris[0].setFont(new Font("Arial", Font.PLAIN, 14));
+		 lblGiris[1].setFont(new Font("Arial", Font.PLAIN, 14));
 		 lblGiris[0].setBounds(250,80,700,20); 
 		 lblGiris[1].setBounds(250,150,700,20);
-		 lblGiris[2].setBounds(380,270,700,20);
+		 lblGiris[2].setBounds(380,330,700,20);
 		 this.add(lblGiris[0]); 
 		 this.add(lblGiris[1]);
 		 this.add(lblGiris[2]);
