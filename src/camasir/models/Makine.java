@@ -21,6 +21,21 @@ public abstract class Makine {
 		this.renk = renk;
 	}
 
+	public void ayarla() {
+	    this.sicaklik = 40;
+	    this.devir = 800;
+	    this.mod = "Pamuklu Standart";
+	    System.out.println("Hızlı ayar yapıldı: 40C, 800 Devir.");
+	}
+
+	
+	public void ayarla(int sicaklik, int devir, String mod) {
+	    this.sicaklik = sicaklik;
+	    this.devir = devir;
+	    this.mod = mod;
+	    System.out.println("Özel ayar yapıldı.");
+	}
+	
 	public abstract void calistir();
 	
 	public int getSicaklik() {

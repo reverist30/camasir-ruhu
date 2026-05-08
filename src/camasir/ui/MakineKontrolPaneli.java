@@ -43,6 +43,8 @@ public class MakineKontrolPaneli extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
+        
+     
 
         // --- UST ALAN (Secimler) ---
         JPanel ustPanel = new JPanel(new GridLayout(3, 2, 5, 5));
@@ -111,12 +113,41 @@ public class MakineKontrolPaneli extends JFrame {
             JOptionPane.showMessageDialog(this, "Varsayılan ayarlar yüklendi.");
         });
 
-        // Baslat Butonu
         btnBaslat.addActionListener(e -> {
-            // Buradaki verileri alip modellere aktarir
-            String mesaj = cbMakineTuru.getSelectedItem() + " başlatılıyor...";
-            JOptionPane.showMessageDialog(this, mesaj);
+            int sicaklik = (int) cbSicaklik.getSelectedItem();
+            String mod = (String) cbMod.getSelectedItem();
+            
+            if (cbMakineTuru.getSelectedIndex() == 0) { // Yikama
+                int devir = (int) cbDevir.getSelectedItem();
+                yikamaModel.setSicaklik(sicaklik);
+                yikamaModel.setMod(mod);
+                yikamaModel.setDevir(devir);
+                JOptionPane.showMessageDialog(this, "Yıkama işlemi " + sicaklik + " derecede başlatıldı!");
+            } else { // Kurutma
+                kurutmaModel.setSicaklik(sicaklik);
+                kurutmaModel.setMod(mod);
+                JOptionPane.showMessageDialog(this, "Kurutma işlemi başlatıldı!");
+            }
         });
+    }
+    
+ // 1. Parametresiz (Hizli Ayar)
+    public void ayarla() {
+        cbSicaklik.setSelectedItem(40);
+        cbMod.setSelectedIndex(0);
+        if (cbMakineTuru.getSelectedIndex() == 0) {
+            cbDevir.setSelectedItem(800);
+        }
+        JOptionPane.showMessageDialog(this, "Hızlı Ayar Uygulandı.");
+    }
+
+    // 2. Parametreli (Ozel Ayar)
+    public void ayarla(int sicaklik, String mod, int devir) {
+        cbSicaklik.setSelectedItem(sicaklik);
+        cbMod.setSelectedItem(mod);
+        if (cbMakineTuru.getSelectedIndex() == 0) {
+            cbDevir.setSelectedItem(devir);
+        }
     }
 
     public static void main(String[] args) {
