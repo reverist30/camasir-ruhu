@@ -13,11 +13,11 @@ public abstract class Kullanici {
 	public String getTC() {
 		return TC;
 	}
-	public void setTC(String tC) {
+	public void setTC (String tC) throws Exception {
 		if(tC != null && tC.length() == 11 && tC.matches("\\d+")) {     //boş mu 11 tane mi ve rakam mı?
 			TC = tC;
 		} else {
-			System.out.println("TC kimlik numarasi 11 karakter olmak zorundadir!");
+			throw new Exception("TC Kimlik numarası tam 11 hane olmak zorundadır!");
 		}
 	}
 	
