@@ -40,6 +40,7 @@ public class MakineKontrolPaneli extends JFrame {
     public MakineKontrolPaneli() {
         setTitle("Çamaşır Ruhu v1.0");
         setSize(400, 500);
+        this.setResizable(false); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
