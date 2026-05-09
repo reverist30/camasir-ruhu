@@ -1,6 +1,9 @@
 package camasir.models;
 
-public class YikamaMakinesi extends Makine{
+import camasir.interfaces.IEkonomik;
+import camasir.interfaces.IGuvenlik;
+
+public class YikamaMakinesi extends Makine implements IEkonomik, IGuvenlik{
 	private int deterjanMiktari;
 	
 	public YikamaMakinesi() {
@@ -24,6 +27,30 @@ public class YikamaMakinesi extends Makine{
 
 	public void setdeterjanMiktari(int deterjanMiktari) {
 		this.deterjanMiktari = deterjanMiktari;
+	}
+
+	@Override
+	public void cocukKilidiAktifEt(boolean durum) {
+		
+		
+	}
+
+	@Override
+	public boolean kapakKilitliMi() {
+
+		return false;
+	}
+
+	@Override
+	public void tasarrufModuAc() {
+	
+		
+	}
+
+	@Override
+	public int tahminiEnerjiTuketimi() {
+	
+		return 0;
 	}
 
 }
