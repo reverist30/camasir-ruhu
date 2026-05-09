@@ -1,16 +1,15 @@
 package camasir.ui;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 
 public class GirisEkrani extends JFrame {
@@ -33,12 +32,23 @@ public class GirisEkrani extends JFrame {
 		 JButton btnGiris = new JButton("Giris");
 		 btnGiris.setForeground(Color.BLACK);
 		 btnGiris.setFont(new Font("Arial", Font.BOLD, 14));
-		 btnGiris.setBounds(420,250, 120,45);
+		 btnGiris.setBounds(330,250, 120,45);
 		 btnGiris.setOpaque(true);
 		 btnGiris.setBorderPainted(false);
-		 btnGiris.setBackground(new Color(100, 200, 120));
+		 btnGiris.setBackground(new Color(150, 230, 170));
 		 btnGiris.setFocusPainted(false);
 		 this.add(btnGiris);
+		 
+		 JButton btnKayit = new JButton("Kayit ol");
+		 btnKayit.setForeground(Color.BLACK);
+		 btnKayit.setFont(new Font("Arial", Font.BOLD, 14));
+		 btnKayit.setBounds(480,250, 120,45);
+		 btnKayit.setBorder(new LineBorder(new Color(255, 240, 150),3));      //çerçeve
+		 btnKayit.setOpaque(true);
+		 btnKayit.setBorderPainted(false);
+		 btnKayit.setBackground(new Color(230, 140, 180));
+		 btnKayit.setFocusPainted(false);
+		 this.add(btnKayit);
 		 
 		 JLabel[] lblGiris = new JLabel[3];
 		 lblGiris[0]= new JLabel("İsminizi yazınız");
@@ -112,7 +122,24 @@ public class GirisEkrani extends JFrame {
 			});
 		 
 		 
-		 
+		 btnGiris.addActionListener(e->{
+				try {
+				    
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());      //ekranın modernliği için
+				} catch (Exception ex) {
+				    ex.printStackTrace();
+				}
+				EventQueue.invokeLater(new Runnable() {
+			        public void run() {
+			            try {
+			            	KayitEkrani kayitekr = new KayitEkrani();
+			            	kayitekr.setVisible(true);
+			            } catch (Exception e) {
+			                e.printStackTrace(); // Hata cıkarsa konsola kirmizi yaziyla firlat
+			            }
+			        }
+			    });
+		 });
 
 	}
 	
