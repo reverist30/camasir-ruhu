@@ -29,9 +29,9 @@ public class KayitEkrani extends JDialog {
         	 txtKayit[i].setBounds(125,50+(i*50), 250,30);
         	 this.add(txtKayit[i]);
          }
-         String[] bloklar = {"A Blok, B Blok, C Blok, D Blok, E Blok"};
+         String[] bloklar = {"A Blok", "B Blok", "C Blok", "D Blok", "E Blok"};
          JComboBox<String> secimKutusu = new JComboBox<>(bloklar);
-         secimKutusu.setBounds(125,150,50,30);
+         secimKutusu.setBounds(50,150,90,30);
          this.add(secimKutusu);
 		 
 		 JButton btnKayit = new JButton("Kayit işlemini yap");
@@ -52,12 +52,14 @@ public class KayitEkrani extends JDialog {
 		 lblKayit[4]= new JLabel("");
 		 for(int i=0;i<lblKayit.length;i++) { 
 			 if(i==4) {
-				 lblKayit[i].setFont(new Font("Tahoma", Font.BOLD, 24));
+				 lblKayit[i].setFont(new Font("Tahoma", Font.BOLD, 14));
 				 lblKayit[i].setForeground(Color.RED);
+				 lblKayit[i].setBounds(60,30+(i*50),400,20);
 			 }else {
 				 lblKayit[i].setFont(new Font("Arial", Font.PLAIN, 14));
+				 lblKayit[i].setBounds(125,30+(i*50),300,20);
 			 }
-			 lblKayit[i].setBounds(125,30+(i*50),300,20);
+			 
 			 this.add(lblKayit[i]);
 		 }
 		  //////////////////////////////////////////////////////////////
@@ -76,20 +78,34 @@ public class KayitEkrani extends JDialog {
 			 if(ogrTC.length()!=11) {
 				 lblKayit[4].setText("Hatalı Giriş! TC 11 haneli olmalı!");
 				 return ;
-			 }else if(ogrTC.equals("11111111111")) {
+			 } if(ogrTC.equals("11111111111")) {
 				 lblKayit[4].setText("Hata! Bu öğrenci sistemde kayitlidir.");
 				 return ;
-			 }else if(ogrOdaNo.length()!=3) {
-				 lblKayit[4].setText("Hatalı Giriş! Oda numaraniz 3 haneli olmalı!");
-					 if(blokIndex==3||blokIndex==4) {
-						 
-					 }
+			 } if(blokIndex==3||blokIndex==4) {
+				 try {				 
+					 if(ogrOdaNo.toLowerCase().startsWith("z")) {
+						 int sayi = Integer.parseInt(ogrOdaNo.substring(1));      //oda numarasının ilk basamağı atılarak integera çevrildi
+						 if(1>sayi || sayi>4 ) {
+							 lblKayit[4].setText("Hatalı Giriş! D ve E bloklarda bu numaraya ait oda bulunmamaktadir!");
+							 return ;
+						 }
+					 }else {
+						 int sayi = Integer.parseInt(ogrOdaNo);
+						 if((sayi/100)>5 ||(sayi%100)>4 || (sayi%100)==0) {
+							 lblKayit[4].setText("Hatalı Giriş! D ve E bloklarında bu numaraya ait oda bulunmamaktadir!");
+							 return ;
+						 }
+					 }				 
+			     }catch(NumberFormatException ex) {
+			    	 
+			     }
+					 
 				 return ;
-			 }else if(ogrTelNo.length()!=10){
+			 } if(ogrTelNo.length()!=10){
 				 lblKayit[4].setText("Hatalı Giriş! Telefon numaraniz 10 haneli olmalı!");
 				 return ;
-			 }else {
-				 try {
+			 }
+			    try {
 					 Ogrenci yeniKayit = new Ogrenci(ogrIsim, secimKutusu.getSelectedItem() + ogrTC, ogrOdaNo, ogrTelNo, 0);
 					 //Safanın kayıt fonksiyonu gelecek
 					 JOptionPane.showMessageDialog(this,"Kayit başariyla tamamlandi.");
@@ -98,7 +114,8 @@ public class KayitEkrani extends JDialog {
 					 JOptionPane.showMessageDialog(this, "Kayıt sırasında bir hata oluştu!");
 					 ex.printStackTrace();            //yazılımcıya bildiri
 				 }
-			 }
+
+			
 			});
 	}
 
