@@ -50,5 +50,4 @@ public class YikamaMakinesi extends Makine implements IEkonomik, IGuvenlik {
 
 		return 0;
 	}
-
 }

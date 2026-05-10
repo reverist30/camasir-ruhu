@@ -34,8 +34,8 @@ public class Ogrenci extends Kullanici {
 		if (blokIsmi.equals("D Blok") || blokIsmi.equals("E Blok")) {
 			katSayisi = 5;
 			herKatOda = 4;
-
 		}
+
 		try {
 			if (ogrOdasi.toLowerCase().startsWith("z")) {
 				int sayi = Integer.parseInt(ogrOdasi.substring(1)); // oda numarasinin ilk basamagi atilarak integera
@@ -51,9 +51,7 @@ public class Ogrenci extends Kullanici {
 			}
 		} catch (NumberFormatException ex) {
 			throw new Exception("Oda numarasını doğru formatta yazınız!");
-
 		}
-
 	}
 
 	public int getRandevuHakki() {
@@ -65,23 +63,22 @@ public class Ogrenci extends Kullanici {
 	}
 
 	public void ekraniCalistir() {
-
 		try {
-		    
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());      //ekranın modernliği için
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // ekranin modernligi icin
 		} catch (Exception e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
+
 		EventQueue.invokeLater(new Runnable() {
-	        public void run() {
-	            try {
-	            	Ogrenci_Paneli ranadevuSayfasi = new Ogrenci_Paneli();
-	            	ranadevuSayfasi.setVisible(true);
-	            } catch (Exception e) {
-	                e.printStackTrace(); // Hata cıkarsa konsola kirmizi yaziyla firlat
-	            }
-	        }
-	    });
+			public void run() {
+				try {
+					Ogrenci_Paneli ranadevuSayfasi = new Ogrenci_Paneli();
+					ranadevuSayfasi.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace(); // Hata cıkarsa konsola kirmizi yaziyla firlat
+				}
+			}
+		});
 
 	}
 }

@@ -14,124 +14,131 @@ import javax.swing.border.LineBorder;
 import camasir.models.Memur;
 import camasir.models.Ogrenci;
 
-
 public class GirisEkrani extends JFrame {
+	private static final long serialVersionUID = 1L;
+
 	public GirisEkrani() {
-		 this.setTitle("Camasir Randevu Sistemi");   
-		 this.setSize(800,500);                //pencerenin boyutlari için
-		 setLocationRelativeTo(null);         //pencerenin ekranin tam ortasinda olmasi icin
-		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-		 this.setLayout(null);
-		 this.getContentPane().setBackground(new Color(200, 220, 255));
-		 this.setResizable(false);        //boyut değişimi kapalı
-		 
-		 JTextField[] txtGiris = new JTextField[2];
-		 txtGiris[0] = new JTextField();
-		 txtGiris[1] = new JTextField();
-		 txtGiris[0].setBounds(150,100, 450,50);
-		 txtGiris[1].setBounds(150,170, 450,50);
-		 this.add(txtGiris[0]);
-		 this.add(txtGiris[1]);
-		 
-		 JButton btnGiris = new JButton("Giris");
-		 btnGiris.setForeground(Color.BLACK);
-		 btnGiris.setFont(new Font("Arial", Font.BOLD, 20));
-		 btnGiris.setBounds(230,250, 120,45);
-		 btnGiris.setOpaque(true);
-		 btnGiris.setBorderPainted(false);
-		 btnGiris.setBackground(new Color(150, 230, 170));
-		 btnGiris.setFocusPainted(false);
-		 this.add(btnGiris);
-		 
-		 JButton btnKayit = new JButton("Kayit ol");
-		 btnKayit.setForeground(Color.BLACK);
-		 btnKayit.setFont(new Font("Arial", Font.BOLD, 20));
-		 btnKayit.setBounds(380,250, 120,45);
-		 btnKayit.setBorder(new LineBorder(new Color(255, 240, 150),3));      //çerçeve
-		 btnKayit.setOpaque(true);
-		 btnKayit.setBorderPainted(false);
-		 btnKayit.setBackground(new Color(230, 140, 180));
-		 btnKayit.setFocusPainted(false);
-		 this.add(btnKayit);
-		 
-		 JLabel[] lblGiris = new JLabel[3];
-		 lblGiris[0]= new JLabel("İsminizi yazınız");
-		 lblGiris[1]= new JLabel("TC kimlik numaranızı yazınız");
-		 lblGiris[2]= new JLabel("");
-		 lblGiris[0].setBounds(150,80,700,20); 
-		 lblGiris[1].setBounds(150,150,700,20);
-		 lblGiris[2].setBounds(190,330,700,50);
-		 for(int i=0;i<lblGiris.length;i++) {
-			 if(i==0||i==1) {
-				 lblGiris[i].setFont(new Font("Arial", Font.PLAIN, 14));				 
-			 }else {
-				 lblGiris[i].setFont(new Font("Tahoma", Font.BOLD, 24));
-				 lblGiris[i].setForeground(Color.RED);
-			 }
-			 this.add(lblGiris[i]);
-		 }
-		  
-		 btnGiris.addActionListener(e -> {
-			 String ogrIsim = txtGiris[0].getText().trim();
-			 String ogrTC = txtGiris[1].getText().trim();
-			 if(ogrIsim.isEmpty() || ogrTC.isEmpty()) {
-				 lblGiris[2].setText("Hatalı Giriş! Boşlukları doldurunuz.");
-				 return;
-			 
-			 }try {
+		this.setTitle("Çamaşır Randevu Sistemi");
+		this.setSize(800, 500); // pencerenin boyutlari icin
+		setLocationRelativeTo(null); // pencerenin ekranin tam ortasinda olmasi icin
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null);
+		this.getContentPane().setBackground(new Color(200, 220, 255));
+		this.setResizable(false); // boyut degisimi kapali
+
+		JTextField[] txtGiris = new JTextField[2];
+		txtGiris[0] = new JTextField();
+		txtGiris[1] = new JTextField();
+		txtGiris[0].setBounds(150, 100, 450, 50);
+		txtGiris[1].setBounds(150, 170, 450, 50);
+		this.add(txtGiris[0]);
+		this.add(txtGiris[1]);
+
+		JButton btnGiris = new JButton("Giriş");
+		btnGiris.setForeground(Color.BLACK);
+		btnGiris.setFont(new Font("Arial", Font.BOLD, 20));
+		btnGiris.setBounds(230, 250, 120, 45);
+		btnGiris.setOpaque(true);
+		btnGiris.setBorderPainted(false);
+		btnGiris.setBackground(new Color(150, 230, 170));
+		btnGiris.setFocusPainted(false);
+		this.add(btnGiris);
+
+		JButton btnKayit = new JButton("Kayıt ol");
+		btnKayit.setForeground(Color.BLACK);
+		btnKayit.setFont(new Font("Arial", Font.BOLD, 20));
+		btnKayit.setBounds(380, 250, 120, 45);
+		btnKayit.setBorder(new LineBorder(new Color(255, 240, 150), 3)); // cerceve
+		btnKayit.setOpaque(true);
+		btnKayit.setBorderPainted(false);
+		btnKayit.setBackground(new Color(230, 140, 180));
+		btnKayit.setFocusPainted(false);
+		this.add(btnKayit);
+
+		JLabel[] lblGiris = new JLabel[3];
+		lblGiris[0] = new JLabel("İsminizi yazınız");
+		lblGiris[1] = new JLabel("TC kimlik numaranızı yazınız");
+		lblGiris[2] = new JLabel("");
+		lblGiris[0].setBounds(150, 80, 700, 20);
+		lblGiris[1].setBounds(150, 150, 700, 20);
+		lblGiris[2].setBounds(190, 330, 700, 50);
+
+		for (int i = 0; i < lblGiris.length; i++) {
+			if (i == 0 || i == 1) {
+				lblGiris[i].setFont(new Font("Arial", Font.PLAIN, 14));
+			} else {
+				lblGiris[i].setFont(new Font("Tahoma", Font.BOLD, 24));
+				lblGiris[i].setForeground(Color.RED);
+			}
+			this.add(lblGiris[i]);
+		}
+
+		btnGiris.addActionListener(e -> {
+			String ogrIsim = txtGiris[0].getText().trim();
+			String ogrTC = txtGiris[1].getText().trim();
+
+			if (ogrIsim.isEmpty() || ogrTC.isEmpty()) {
+				lblGiris[2].setText("Hatalı Giriş! Boşlukları doldurunuz.");
+				return;
+			}
+
+			try {
 				Ogrenci kontrol = new Ogrenci();
 				kontrol.setTC(ogrTC);
-			  
-			 }catch(Exception ex) {
-				 lblGiris[2].setText("Hatalı Giriş! " + ex.getMessage());
-				 return ;
-			 }
-			 String ogrenciIsmi = camasir.logic.DosyaYoneticisi.getInstance().ogrenciIsmiGetir(ogrTC);
-			 String memurIsmi = camasir.logic.DosyaYoneticisi.getInstance().memurIsmiGetir(ogrTC);
-			 if(ogrenciIsmi != null) {
-				   if(!ogrenciIsmi.equalsIgnoreCase(ogrIsim)) {
-					 lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");	
-					 return ;
-			     }else {
-			    	 Ogrenci giris = new Ogrenci();
-			    	 giris.ekraniCalistir();
-					 this.dispose();	
-					 return ;
-			     }
-	 
-			 }if(memurIsmi != null) {
-				 if(!memurIsmi.equalsIgnoreCase(ogrIsim)) {
-					 lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");		
-					 return ;
-				 }else {
-						Memur giris = new Memur();
-						giris.ekraniCalistir();
-						this.dispose();
-						return ;
-				 }
 
-			 }
-			 lblGiris[2].setText("Hatalı Giriş! Önce kayıt olunuz.");
-			 return ;
-			});
-		 	 
-		 btnKayit.addActionListener(e->{
-				try {
-				    
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());      //ekranın modernliği için
-				} catch (Exception ex) {
-				    ex.printStackTrace();
+			} catch (Exception ex) {
+				lblGiris[2].setText("Hatalı Giriş! " + ex.getMessage());
+				return;
+			}
+
+			String ogrenciIsmi = camasir.logic.DosyaYoneticisi.getInstance().ogrenciIsmiGetir(ogrTC);
+			String memurIsmi = camasir.logic.DosyaYoneticisi.getInstance().memurIsmiGetir(ogrTC);
+
+			if (ogrenciIsmi != null) {
+				if (!ogrenciIsmi.equalsIgnoreCase(ogrIsim)) {
+					lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");
+					return;
+				} else {
+					Ogrenci giris = new Ogrenci();
+					giris.ekraniCalistir();
+					this.dispose();
+					return;
 				}
-				EventQueue.invokeLater(new Runnable() {
-			        public void run() {
-			            try {
-			            	KayitEkrani kayitekr = new KayitEkrani();
-			            	kayitekr.setVisible(true);
-			            } catch (Exception e) {
-			                e.printStackTrace(); // Hata cıkarsa konsola kirmizi yaziyla firlat
-			            }
-			        }
-			    });
-		 });
+
+			}
+			if (memurIsmi != null) {
+				if (!memurIsmi.equalsIgnoreCase(ogrIsim)) {
+					lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");
+					return;
+				} else {
+					Memur giris = new Memur();
+					giris.ekraniCalistir();
+					this.dispose();
+					return;
+				}
+
+			}
+
+			lblGiris[2].setText("Hatalı Giriş! Önce kayıt olunuz.");
+			return;
+		});
+
+		btnKayit.addActionListener(e -> {
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // ekranin modernligi icin
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						KayitEkrani kayitekr = new KayitEkrani();
+						kayitekr.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace(); // Hata cıkarsa konsola kirmizi yaziyla firlat
+					}
+				}
+			});
+		});
 	}
 }

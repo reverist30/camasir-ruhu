@@ -20,7 +20,7 @@ import camasir.models.KurutmaMakinesi;
 import camasir.models.YikamaMakinesi;
 
 public class MakineKontrolPaneli extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	// Modeller
 	private YikamaMakinesi yikamaModel = new YikamaMakinesi();
 	private KurutmaMakinesi kurutmaModel = new KurutmaMakinesi(40, 30, 5, 0, "Standart", "Beyaz", "Dolap Kurulugu",
