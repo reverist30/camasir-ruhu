@@ -40,11 +40,11 @@ public class CamasirApp extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+
 		JButton btnNewButton = new JButton("Makine durumunu kontrol et");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Makine calisiyor!");
+				JOptionPane.showMessageDialog(null, "Makine çalışıyor!");
 			}
 		});
 		contentPane.add(btnNewButton);

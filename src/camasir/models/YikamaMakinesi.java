@@ -3,9 +3,9 @@ package camasir.models;
 import camasir.interfaces.IEkonomik;
 import camasir.interfaces.IGuvenlik;
 
-public class YikamaMakinesi extends Makine implements IEkonomik, IGuvenlik{
+public class YikamaMakinesi extends Makine implements IEkonomik, IGuvenlik {
 	private int deterjanMiktari;
-	
+
 	public YikamaMakinesi() {
 		super();
 	}
@@ -18,9 +18,9 @@ public class YikamaMakinesi extends Makine implements IEkonomik, IGuvenlik{
 
 	@Override
 	public void calistir() {
-		
+
 	}
-	
+
 	public int getdeterjanMiktari() {
 		return deterjanMiktari;
 	}
@@ -31,8 +31,7 @@ public class YikamaMakinesi extends Makine implements IEkonomik, IGuvenlik{
 
 	@Override
 	public void cocukKilidiAktifEt(boolean durum) {
-		
-		
+
 	}
 
 	@Override
@@ -43,13 +42,12 @@ public class YikamaMakinesi extends Makine implements IEkonomik, IGuvenlik{
 
 	@Override
 	public void tasarrufModuAc() {
-	
-		
+
 	}
 
 	@Override
 	public int tahminiEnerjiTuketimi() {
-	
+
 		return 0;
 	}
 

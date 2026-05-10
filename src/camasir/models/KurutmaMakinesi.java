@@ -2,7 +2,7 @@ package camasir.models;
 
 public class KurutmaMakinesi extends Makine {
 	private String tipi;
-	
+
 	public KurutmaMakinesi() {
 		super();
 	}
@@ -12,17 +12,18 @@ public class KurutmaMakinesi extends Makine {
 		super(sicaklik, sure, kapasite, devir, mod, renk);
 		this.tipi = tipi;
 	}
-	
+
 	@Override
 	public void calistir() {
-		
+
 	}
+
 	public String getTipi() {
 		return tipi;
 	}
+
 	public void setTipi(String tipi) {
 		this.tipi = tipi;
 	}
-	
 
 }

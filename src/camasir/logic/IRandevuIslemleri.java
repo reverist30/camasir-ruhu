@@ -1,17 +1,16 @@
 package camasir.logic;
 
-import camasir.models.Randevu;
 import java.util.List;
 
+import camasir.models.Randevu;
+
 public interface IRandevuIslemleri {
-   
-    boolean randevuAl(Randevu randevu);
 
-   
-    boolean randevuIptalEt(String randevuID);
+	boolean randevuAl(Randevu randevu);
 
-    List<Randevu> randevulariGetir();
-    
-    
-    boolean saatDoluMu(String saat);
+	boolean randevuIptalEt(String randevuID);
+
+	List<Randevu> randevulariGetir();
+
+	boolean saatDoluMu(String saat);
 }

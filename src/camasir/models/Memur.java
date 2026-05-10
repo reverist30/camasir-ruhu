@@ -1,7 +1,7 @@
 package camasir.models;
 
 public class Memur extends Kullanici {
-	
+
 	private String personelID;
 
 	public Memur(String tC, String telNo, String tamIsim, String personelID) {
@@ -16,9 +16,9 @@ public class Memur extends Kullanici {
 	public void setPersonelID(String personelID) {
 		this.personelID = personelID;
 	}
+
 	public void ekraniCalistir() {
-		
-		
+
 	}
 
 }
