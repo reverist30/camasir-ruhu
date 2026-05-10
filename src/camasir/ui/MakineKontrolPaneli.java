@@ -13,13 +13,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import camasir.models.KurutmaMakinesi;
 import camasir.models.YikamaMakinesi;
+import camasir.ui.Ogrenci_Paneli;
+import camasir.ui.Memur_Paneli;
 
-public class MakineKontrolPaneli extends JFrame {
+public class MakineKontrolPaneli extends javax.swing.JDialog {
 	private static final long serialVersionUID = 1L;
 	// Modeller
 	private YikamaMakinesi yikamaModel = new YikamaMakinesi();
@@ -38,8 +41,16 @@ public class MakineKontrolPaneli extends JFrame {
 	// Kurutmaya Ozel
 	private JComboBox<String> cbKurutmaDerecesi;
 
-	public MakineKontrolPaneli() {
-		setTitle("Çamaşır Ruhu v1.0");
+	public MakineKontrolPaneli(java.awt.Frame parent) {
+		super(parent, true);
+		UIManager.put("Label.foreground", Color.BLACK);
+        UIManager.put("Button.foreground", Color.BLACK);
+        this.setTitle("Makine Ayarları");
+        this.setLocationRelativeTo(parent);
+        
+        this.setTitle("Makine Ayarları");
+        this.setLocationRelativeTo(parent);
+		setTitle("Makineyi Ayarla");
 		setSize(400, 500);
 		this.setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
