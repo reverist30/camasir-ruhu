@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime; //  Tarih ve saat islemleri icin
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import camasir.logic.CamasirYonetim;
 import camasir.logic.DosyaYoneticisi;
 
 public class Ogrenci_Paneli extends JFrame {
@@ -43,15 +45,31 @@ public class Ogrenci_Paneli extends JFrame {
 			btn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					int cevap = JOptionPane.showConfirmDialog(null, saat + " saati için randevu onaylıyor musunuz?",
-							"Randevu Onayı", JOptionPane.YES_NO_OPTION);
-
-					if (cevap == JOptionPane.YES_OPTION) {
-						btn.setBackground(new Color(231, 76, 60));
+					CamasirYonetim yonetim = new CamasirYonetim();
+					String aktifOgrenciTC = "12345678901"; // Burasi giris yapan ogrenciden gelecek
+					
+					// Haftalik sinir kontrolu
+					if (!yonetim.randevuHakkiVarMi(aktifOgrenciTC)) {
+						JOptionPane.showMessageDialog(null, "Hata: Haftalık maksimum 3 randevu sınırına ulaştınız!");
+						return;
+					}
+					
+					// Saat çakismasi kontrolu
+					if (!yonetim.saatMusaitMi(saat)) {
+						JOptionPane.showMessageDialog(null, "Hata: Bu saat başka bir öğrenci tarafından alınmış!");
+						btn.setBackground(Color.RED); // Butonu kirmizi yap
 						btn.setEnabled(false);
-
-						DosyaYoneticisi.getInstance().veriyiKaydet("Randevu: " + saat, true);
-						JOptionPane.showMessageDialog(null, "Randevunuz başarıyla kaydedildi!");
+						return;
+					}
+					
+					int onay = JOptionPane.showConfirmDialog(null, saat + " için randevu onaylıyor musunuz?",
+							"Randevu Onayı", JOptionPane.YES_NO_OPTION);
+					if (onay == JOptionPane.YES_OPTION) {
+						String kayitVerisi = aktifOgrenciTC + " | " + saat + " | " + LocalDateTime.now();
+						DosyaYoneticisi.getInstance().veriyiKaydet(kayitVerisi, true);
+						btn.setBackground(Color.RED);
+						btn.setEnabled(false);
+						JOptionPane.showMessageDialog(null, "Randevunuz başarıyla oluşturuldu.");
 					}
 				}
 			});
