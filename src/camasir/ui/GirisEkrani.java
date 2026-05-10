@@ -85,8 +85,11 @@ public class GirisEkrani extends JFrame {
 			 }catch(Exception ex) {
 				 lblGiris[2].setText("Hatalı Giriş! " + ex.getMessage());
 				 return ;
-			 }if(ogrTC.equals("11111111111")) {
-				   if(!ogrIsim.equalsIgnoreCase("Merve")) {
+			 }
+			 String ogrenciIsmi = camasir.logic.DosyaYoneticisi.getInstance().ogrenciIsmiGetir(ogrTC);
+			 String memurIsmi = camasir.logic.DosyaYoneticisi.getInstance().memurIsmiGetir(ogrTC);
+			 if(ogrenciIsmi != null) {
+				   if(!ogrenciIsmi.equalsIgnoreCase(ogrIsim)) {
 					 lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");	
 					 return ;
 			     }else {
@@ -96,8 +99,8 @@ public class GirisEkrani extends JFrame {
 					 return ;
 			     }
 	 
-			 }if(ogrTC.equals("22222222222")) {
-				 if(!ogrIsim.equalsIgnoreCase("Belkıs")) {
+			 }if(memurIsmi != null) {
+				 if(!memurIsmi.equalsIgnoreCase(ogrIsim)) {
 					 lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");		
 					 return ;
 				 }else {

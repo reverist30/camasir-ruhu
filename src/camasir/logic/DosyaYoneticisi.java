@@ -16,6 +16,7 @@ public class DosyaYoneticisi {
 
 	private final String RANDEVU_DOSYASI = "randevular.txt";
 	private final String KULLANICI_DOSYASI = "kullanicilar.txt";
+	private final String MEMUR_DOSYASI = "memurlar.txt";
 
 	private DosyaYoneticisi() {
 		dosyalariOlustur();
@@ -32,10 +33,14 @@ public class DosyaYoneticisi {
 		try {
 			File rDosya = new File(RANDEVU_DOSYASI);
 			File kDosya = new File(KULLANICI_DOSYASI);
+			File mDosya = new File(MEMUR_DOSYASI);
+			
 			if (!rDosya.exists())
 				rDosya.createNewFile();
 			if (!kDosya.exists())
 				kDosya.createNewFile();
+			if (!mDosya.exists()) 
+				mDosya.createNewFile();
 		} catch (IOException e) {
 			System.err.println("Dosya oluşturma hatası: " + e.getMessage());
 		}
@@ -63,5 +68,27 @@ public class DosyaYoneticisi {
 			System.err.println("Okuma hatası: " + e.getMessage());
 		}
 		return satirlar;
+	}
+	public String ogrenciIsmiGetir(String arananTC) {
+	    java.util.List<String> satirlar = verileriOku(false);
+	    for (String satir : satirlar) {
+	        String[] bilgiler = satir.split(" - ");
+	        if (bilgiler.length >= 2 && bilgiler[1].trim().equals(arananTC)) {
+	            return bilgiler[0].trim(); // TC'yi buldu, İSMİ geri yolluyor!
+	        }
+	    }
+	    return null; // TC yoksa boş dönüyor
+	}
+	public String memurIsmiGetir(String arananTC) {
+	    try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(MEMUR_DOSYASI))) {
+	        String satir;
+	        while ((satir = br.readLine()) != null) {
+	            String[] bilgiler = satir.split(" - ");
+	            if (bilgiler.length >= 2 && bilgiler[1].trim().equals(arananTC)) {
+	                return bilgiler[0].trim(); // TC'yi buldu, İSMİ geri yolluyor!
+	            }
+	        }
+	    } catch (Exception e) {}
+	    return null; // TC yoksa boş dönüyor
 	}
 }

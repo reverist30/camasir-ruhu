@@ -79,10 +79,18 @@ public class KayitEkrani extends JDialog {
 			 String ogrTelNo = txtKayit[3].getText().trim();
 			 int blokIndex = secimKutusu.getSelectedIndex();
 
-			  if(ogrTC.equals("11111111111")) {
-				 lblKayit[4].setText("Hata! Bu öğrenci sistemde kayitlidir.");
-				 return ;
-			 }
+			 java.util.List<String> kayitliKullanicilar = camasir.logic.DosyaYoneticisi.getInstance().verileriOku(false);
+             boolean tcKayitliMi = false;
+             for (String satir : kayitliKullanicilar) {            	 
+                 if (satir.contains(ogrTC)) {                 	
+                     tcKayitliMi = true;
+                     break; // Bulduğumuz an döngüyü durdur
+                 }
+             }
+             if (tcKayitliMi) {            	 
+                 lblKayit[2].setText("Hata! Bu TC numarası sistemde zaten kayitlidir.");            
+                 return;
+             }
 	/*		 
 	 *		 if(ogrTC.length()!=11) {
 			 lblKayit[4].setText("Hatalı Giriş! TC 11 haneli olmalı!");
@@ -117,7 +125,8 @@ public class KayitEkrani extends JDialog {
 			 }*/
 			    try {
 					 Ogrenci yeniKayit = new Ogrenci(ogrIsim, ogrTC, secimKutusu.getSelectedItem() +"-"+ ogrOdaNo, ogrTelNo, 0);
-					 //Safanın kayıt fonksiyonu gelecek
+					 String kaydedilecekVeri = ogrIsim + " - " + ogrTC + " - " + secimKutusu.getSelectedItem() + " - " + ogrOdaNo + " - " + ogrTelNo;
+					 camasir.logic.DosyaYoneticisi.getInstance().veriyiKaydet(kaydedilecekVeri, false);
 					 JOptionPane.showMessageDialog(this,"Kayit başariyla tamamlandi.");
 					 this.dispose();
 				 }catch(Exception ex) {
