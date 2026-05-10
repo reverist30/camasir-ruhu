@@ -139,7 +139,7 @@ public class KayitEkrani extends JDialog {
 				String kaydedilecekVeri = ogrIsim + " - " + ogrTC + " - " + secimKutusu.getSelectedItem() + " - "
 						+ ogrOdaNo + " - " + ogrTelNo;
 				camasir.logic.DosyaYoneticisi.getInstance().veriyiKaydet(kaydedilecekVeri, false);
-				JOptionPane.showMessageDialog(this, "Kayıt basarıyla tamamlandı.");
+				JOptionPane.showMessageDialog(this, "Kayıt başarıyla tamamlandı.");
 				this.dispose();
 			} catch (Exception ex) {
 				JOptionPane.showMessageDialog(this, "Hata! " + ex.getMessage());
