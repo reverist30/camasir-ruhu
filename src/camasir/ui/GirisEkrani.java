@@ -83,7 +83,7 @@ public class GirisEkrani extends JFrame {
 			}
 
 			try {
-				Ogrenci_Paneli panel = new Ogrenci_Paneli(ogrTC);
+				Ogrenci kontrol = new Ogrenci();
 				kontrol.setTC(ogrTC);
 
 			} catch (Exception ex) {

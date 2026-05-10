@@ -63,21 +63,6 @@ public class Ogrenci_Paneli extends JFrame {
 				String secilenGun = (String) cbGunler.getSelectedItem();
 				CamasirYonetim yonetim = new CamasirYonetim();
 
-				MakineKontrolPaneli makineEkrani = new MakineKontrolPaneli(this);
-				makineEkrani.setVisible(true);
-				
-				int onay = JOptionPane.showConfirmDialog(this,
-		                secilenGun + " günü " + secilenSaat + " için randevuyu onaylıyor musunuz?", 
-		                "Randevu Onayı", JOptionPane.YES_NO_OPTION);
-				
-				if (onay == JOptionPane.YES_OPTION) {
-		            // Kayıt kodların...
-		            String kayitVerisi = aktifOgrenciTC + " | " + secilenGun + " | " + secilenSaat + " | " + LocalDateTime.now();
-		            DosyaYoneticisi.getInstance().veriyiKaydet(kayitVerisi, true);
-		            butonlariGuncelle();
-		            JOptionPane.showMessageDialog(this, "Randevunuz başarıyla oluşturuldu.");
-				}
-				
 				// Iptal kontrolu:
 				// Eger buton kirmiziysa (saatMusaitMi = false) ve bu randevu bu ogrenciye aitse
 				if (!yonetim.saatMusaitMi(secilenGun, secilenSaat)) {

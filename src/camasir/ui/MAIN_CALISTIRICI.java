@@ -1,6 +1,5 @@
 package camasir.ui;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.UIManager;
@@ -8,19 +7,6 @@ import javax.swing.UIManager;
 public class MAIN_CALISTIRICI {
 
 	public static void main(String[] args) {
-		
-		try {
-	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        
-	        UIManager.put("Label.foreground", Color.BLACK);
-	        UIManager.put("TextField.foreground", Color.BLACK);
-	        UIManager.put("Button.foreground", Color.BLACK);
-	        UIManager.put("RadioButton.foreground", Color.BLACK);
-	        
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // ekranin modernligi icin
 		} catch (Exception e) {
