@@ -3,11 +3,11 @@ package camasir.logic;
 import java.util.List;
 
 public class CamasirYonetim {
-	public boolean saatMusaitMi(String secilenSaat) {
+	public boolean saatMusaitMi(String gun, String secilenSaat) {
 		List<String> tumRandevular = DosyaYoneticisi.getInstance().verileriOku(true);
+		String aranan = "| " + gun + " | " + secilenSaat + " |";
 		for (String satir : tumRandevular) {
-
-			if (satir.contains("| " + secilenSaat + " |")) {
+			if (satir.contains(aranan)) {
 				return false;
 			}
 		}

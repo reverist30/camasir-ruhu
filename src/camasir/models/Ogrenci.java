@@ -64,21 +64,20 @@ public class Ogrenci extends Kullanici {
 
 	public void ekraniCalistir() {
 		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // ekranin modernligi icin
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		String aktifTC = this.getTC(); // 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ogrenci_Paneli ranadevuSayfasi = new Ogrenci_Paneli();
+					Ogrenci_Paneli ranadevuSayfasi = new Ogrenci_Paneli(aktifTC); // TC burayaa
 					ranadevuSayfasi.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace(); // Hata cıkarsa konsola kirmizi yaziyla firlat
+					e.printStackTrace(); 
 				}
 			}
 		});
-
 	}
 }

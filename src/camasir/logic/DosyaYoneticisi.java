@@ -94,4 +94,31 @@ public class DosyaYoneticisi {
 		}
 		return null; // TC yoksa boş donuyor
 	}
+	
+	public void randevuIptalEt(String tc, String saat) {
+	    List<String> tumRandevular = new ArrayList<>();
+	    File dosya = new File(RANDEVU_DOSYASI);
+
+	    // Dosyayı oku ve silinecek olan haric listeye ekle
+	    try (BufferedReader br = new BufferedReader(new FileReader(dosya))) {
+	        String satir;
+	        while ((satir = br.readLine()) != null) {
+	            // Eger satir hem bu TC'yi hem de bu saati icermiyorsa listeye ekle
+	            if (!(satir.contains(tc) && satir.contains(saat))) {
+	                tumRandevular.add(satir);
+	            }
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    // Dosyayi "false" parametresiyle tekrar kaydet
+	    try (PrintWriter pw = new PrintWriter(new FileWriter(dosya, false))) {
+	        for (String r : tumRandevular) {
+	            pw.println(r);
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 }

@@ -100,11 +100,14 @@ public class GirisEkrani extends JFrame {
 					return;
 				} else {
 					Ogrenci giris = new Ogrenci();
+					try {
+						giris.setTC(ogrTC);
+					} catch (Exception ex) {
+					}
 					giris.ekraniCalistir();
 					this.dispose();
 					return;
 				}
-
 			}
 			if (memurIsmi != null) {
 				if (!memurIsmi.equalsIgnoreCase(ogrIsim)) {
