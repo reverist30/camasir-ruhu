@@ -3,13 +3,15 @@ package camasir.ui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
-import javax.swing.UIManager;
+import camasir.models.Ogrenci;
 
 
 public class GirisEkrani extends JFrame {
@@ -67,23 +69,7 @@ public class GirisEkrani extends JFrame {
 			 }
 			 this.add(lblGiris[i]);
 		 }
-		 
-		 
-		 
-		 
-	/*	 lblGiris[2].setForeground(Color.RED);        //yazının rengi 
-		 lblGiris[3].setForeground(Color.RED);
-		 lblGiris[0].setFont(new Font("Arial", Font.PLAIN, 14));
-		 lblGiris[1].setFont(new Font("Arial", Font.PLAIN, 14));
-		 lblGiris[0].setBounds(250,80,700,20); 
-		 lblGiris[1].setBounds(250,150,700,20);
-		 lblGiris[2].setBounds(380,330,700,20);
-		 lblGiris[3].setBounds(380,330,700,20);
-		 this.add(lblGiris[0]); 
-		 this.add(lblGiris[1]);
-		 this.add(lblGiris[2]);
-		 this.add(lblGiris[3]);
-	*/	 
+		  
 		 btnGiris.addActionListener(e -> {
 			 String ogrIsim = txtGiris[0].getText().trim();
 			 String ogrTC = txtGiris[1].getText().trim();
@@ -91,10 +77,14 @@ public class GirisEkrani extends JFrame {
 				 lblGiris[2].setText("Hatalı Giriş! Boşlukları doldurunuz.");
 				 return;
 			 
-			 }if(ogrTC.length()!=11) {
-				 lblGiris[2].setText("Hatalı Giriş! TC 11 haneli olmalı!");
+			 }try {
+				Ogrenci kontrol = new Ogrenci();
+				kontrol.setTC(ogrTC);
+			  
+			 }catch(Exception ex) {
+				 lblGiris[2].setText("Hatalı Giriş! " + ex.getMessage());
 				 return ;
-			 }else if(ogrTC.equals("11111111111")) {
+			 }if(ogrTC.equals("11111111111")) {
 				   if(!ogrIsim.equalsIgnoreCase("Merve")) {
 					 lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");	
 					 return ;
@@ -105,7 +95,7 @@ public class GirisEkrani extends JFrame {
 						return ;
 			     }
 	 
-			 }else if(ogrTC.equals("22222222222")) {
+			 }if(ogrTC.equals("22222222222")) {
 				 if(!ogrIsim.equalsIgnoreCase("Belkıs")) {
 					 lblGiris[2].setText("Hatalı Giriş! TC ile isim uyuşmamaktadır.");		
 					 return ;
@@ -116,13 +106,11 @@ public class GirisEkrani extends JFrame {
 						return ;
 				 }
 
-			 }else {
-				 lblGiris[2].setText("Hatalı Giriş! Önce kayıt olunuz.");
-				 return ;
 			 }
+			 lblGiris[2].setText("Hatalı Giriş! Önce kayıt olunuz.");
+			 return ;
 			});
-		 
-		 
+		 	 
 		 btnKayit.addActionListener(e->{
 				try {
 				    
@@ -141,8 +129,5 @@ public class GirisEkrani extends JFrame {
 			        }
 			    });
 		 });
-
 	}
-	
-
 }

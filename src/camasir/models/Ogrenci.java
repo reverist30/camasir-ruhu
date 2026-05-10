@@ -7,13 +7,41 @@ public class Ogrenci extends Kullanici {
 		super(tC, telNo, tamIsim);
 		this.odaNo = odaNo;
 		this.randevuHakki = randevuHakki;
+	}public Ogrenci(){
+		
 	}
 	
 	public String getOdaNo() {
 		return odaNo;
 	}
-	public void setOdaNo(String odaNo) {
-		this.odaNo = odaNo;
+	public void setOdaNo(String odaNo)throws Exception {
+		String[] parca = odaNo.split("-");
+		String blokIsmi = parca[0].trim();
+		String ogrOdasi = parca[1].trim();
+		
+		int katSayisi = 9;
+		 int herKatOda=  30;
+		 if( blokIsmi.equals("D Blok")|| blokIsmi.equals("E Blok") ) {
+			 katSayisi = 5;  herKatOda=  4;
+			 
+		 }try{
+			 if(ogrOdasi.toLowerCase().startsWith("z")) {
+				 int sayi = Integer.parseInt(ogrOdasi.substring(1));      //oda numarasının ilk basamağı atılarak integera çevrildi
+				 if(1>sayi || sayi>herKatOda ) {
+					 throw new Exception("Bu bloğa ait zemin kat odası bulunmamaktadır!");
+				 }
+			 }else {
+				 int sayi = Integer.parseInt(ogrOdasi);
+				 if((sayi/100)>katSayisi ||(sayi%100)>herKatOda || (sayi%100)==0) {
+					 throw new Exception("Bu bloğa ait oda bulunmamaktadır!");
+				 }
+			 }
+		 }catch(NumberFormatException ex) {
+			 throw new Exception("Oda numarasını doğru formatta yazınız!");
+			 
+		 }
+		
+		
 	}
 	public int getRandevuHakki() {
 		return randevuHakki;

@@ -21,8 +21,7 @@ public class KayitEkrani extends JDialog {
 		 this.setModal(true);               //arkada açık olan ekranı dondurur.
 		 this.setLayout(null);               //otomatik yerleşimi iptal
 		 this.getContentPane().setBackground(new Color(200, 220, 255));         //arka plan rengi
-		 this.setResizable(false);            //boyut değişimi kapalı
-		 
+		 this.setResizable(false);            //boyut değişimi kapalı	 
 		 
          String[] bloklar = {"A Blok", "B Blok", "C Blok", "D Blok", "E Blok"};
          JComboBox<String> secimKutusu = new JComboBox<>(bloklar);
@@ -37,9 +36,7 @@ public class KayitEkrani extends JDialog {
         	 if(i==2) {
         		 txtKayit[i].setBounds(195,50+(i*50), 180,30);
         	 }
-         }
-
-		 
+         }	 
 		 JButton btnKayit = new JButton("Kayit işlemini yap");
 		 btnKayit.setForeground(Color.BLACK);
 		 btnKayit.setFont(new Font("Arial", Font.BOLD, 14));
@@ -116,7 +113,7 @@ public class KayitEkrani extends JDialog {
 				 return ;
 			 }
 			    try {
-					 Ogrenci yeniKayit = new Ogrenci(ogrIsim, secimKutusu.getSelectedItem() + ogrTC, ogrOdaNo, ogrTelNo, 0);
+					 Ogrenci yeniKayit = new Ogrenci(ogrIsim, ogrTC, secimKutusu.getSelectedItem() +"-"+ ogrOdaNo, ogrTelNo, 0);
 					 //Safanın kayıt fonksiyonu gelecek
 					 JOptionPane.showMessageDialog(this,"Kayit başariyla tamamlandi.");
 					 this.dispose();
@@ -124,9 +121,6 @@ public class KayitEkrani extends JDialog {
 					 JOptionPane.showMessageDialog(this, "Kayıt sırasında bir hata oluştu!");
 					 ex.printStackTrace();            //yazılımcıya bildiri
 				 }
-
-			
 			});
 	}
-
 }

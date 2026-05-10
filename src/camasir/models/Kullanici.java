@@ -10,6 +10,9 @@ public abstract class Kullanici {
 		this.telNo = telNo;
 		this.tamIsim = tamIsim;
 	}
+	public Kullanici() {
+		
+	}
 	public String getTC() {
 		return TC;
 	}
@@ -17,10 +20,9 @@ public abstract class Kullanici {
 		if(tC != null && tC.length() == 11 && tC.matches("\\d+")) {     //boş mu 11 tane mi ve rakam mı?
 			TC = tC;
 		} else {
-			throw new Exception("TC Kimlik numarası tam 11 hane olmak zorundadır!");
+			throw new Exception("TC Kimlik numarası 11 hane olmalı!");
 		}
 	}
-	
 	public String getTelNo() {
 		return telNo;
 	}
