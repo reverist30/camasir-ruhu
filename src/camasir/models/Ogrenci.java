@@ -1,5 +1,11 @@
 package camasir.models;
 
+import java.awt.EventQueue;
+
+import javax.swing.UIManager;
+
+import camasir.ui.Ogrenci_Paneli;
+
 public class Ogrenci extends Kullanici {
 	private String odaNo;
 	private int randevuHakki;
@@ -59,6 +65,23 @@ public class Ogrenci extends Kullanici {
 	}
 
 	public void ekraniCalistir() {
+
+		try {
+		    
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());      //ekranın modernliği için
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+		EventQueue.invokeLater(new Runnable() {
+	        public void run() {
+	            try {
+	            	Ogrenci_Paneli ranadevuSayfasi = new Ogrenci_Paneli();
+	            	ranadevuSayfasi.setVisible(true);
+	            } catch (Exception e) {
+	                e.printStackTrace(); // Hata cıkarsa konsola kirmizi yaziyla firlat
+	            }
+	        }
+	    });
 
 	}
 }
