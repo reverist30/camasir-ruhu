@@ -23,16 +23,22 @@ public class KayitEkrani extends JDialog {
 		 this.getContentPane().setBackground(new Color(200, 220, 255));         //arka plan rengi
 		 this.setResizable(false);            //boyut değişimi kapalı
 		 
+		 
+         String[] bloklar = {"A Blok", "B Blok", "C Blok", "D Blok", "E Blok"};
+         JComboBox<String> secimKutusu = new JComboBox<>(bloklar);
+         secimKutusu.setBounds(125,150,70,30);
+         this.add(secimKutusu);
+         
 		 JTextField[] txtKayit = new JTextField[4];
          for(int i=0;i<txtKayit.length;i++) {
         	 txtKayit[i] = new JTextField();
         	 txtKayit[i].setBounds(125,50+(i*50), 250,30);
         	 this.add(txtKayit[i]);
+        	 if(i==2) {
+        		 txtKayit[i].setBounds(195,50+(i*50), 180,30);
+        	 }
          }
-         String[] bloklar = {"A Blok", "B Blok", "C Blok", "D Blok", "E Blok"};
-         JComboBox<String> secimKutusu = new JComboBox<>(bloklar);
-         secimKutusu.setBounds(50,150,90,30);
-         this.add(secimKutusu);
+
 		 
 		 JButton btnKayit = new JButton("Kayit işlemini yap");
 		 btnKayit.setForeground(Color.BLACK);
@@ -54,7 +60,7 @@ public class KayitEkrani extends JDialog {
 			 if(i==4) {
 				 lblKayit[i].setFont(new Font("Tahoma", Font.BOLD, 14));
 				 lblKayit[i].setForeground(Color.RED);
-				 lblKayit[i].setBounds(60,30+(i*50),400,20);
+				 lblKayit[i].setBounds(125,30+(i*50),400,20);
 			 }else {
 				 lblKayit[i].setFont(new Font("Arial", Font.PLAIN, 14));
 				 lblKayit[i].setBounds(125,30+(i*50),300,20);
@@ -81,28 +87,32 @@ public class KayitEkrani extends JDialog {
 			 } if(ogrTC.equals("11111111111")) {
 				 lblKayit[4].setText("Hata! Bu öğrenci sistemde kayitlidir.");
 				 return ;
-			 } if(blokIndex==3||blokIndex==4) {
-				 try {				 
-					 if(ogrOdaNo.toLowerCase().startsWith("z")) {
-						 int sayi = Integer.parseInt(ogrOdaNo.substring(1));      //oda numarasının ilk basamağı atılarak integera çevrildi
-						 if(1>sayi || sayi>4 ) {
-							 lblKayit[4].setText("Hatalı Giriş! D ve E bloklarda bu numaraya ait oda bulunmamaktadir!");
-							 return ;
-						 }
-					 }else {
-						 int sayi = Integer.parseInt(ogrOdaNo);
-						 if((sayi/100)>5 ||(sayi%100)>4 || (sayi%100)==0) {
-							 lblKayit[4].setText("Hatalı Giriş! D ve E bloklarında bu numaraya ait oda bulunmamaktadir!");
-							 return ;
-						 }
-					 }				 
-			     }catch(NumberFormatException ex) {
-			    	 
-			     }
-					 
+			 }
+			 int katSayisi = 9;
+			 int herKatOda=  30;
+			 if(blokIndex == 3|| blokIndex ==4) {
+				 katSayisi = 5;  herKatOda=  4;
+				 
+			 }try{
+				 if(ogrOdaNo.toLowerCase().startsWith("z")) {
+					 int sayi = Integer.parseInt(ogrOdaNo.substring(1));      //oda numarasının ilk basamağı atılarak integera çevrildi
+					 if(1>sayi || sayi>herKatOda ) {
+						 lblKayit[4].setText("Bu numaraya ait oda bulunmamaktadir!");
+						 return ;
+					 }
+				 }else {
+					 int sayi = Integer.parseInt(ogrOdaNo);
+					 if((sayi/100)>katSayisi ||(sayi%100)>herKatOda || (sayi%100)==0) {
+						 lblKayit[4].setText("Bu numaraya ait oda bulunmamaktadir!");
+						 return ;
+					 }
+				 }
+			 }catch(NumberFormatException ex) {
+				 lblKayit[4].setText("Hata! Oda numarasini dogru formatta yaziniz!");
 				 return ;
-			 } if(ogrTelNo.length()!=10){
-				 lblKayit[4].setText("Hatalı Giriş! Telefon numaraniz 10 haneli olmalı!");
+				 
+			 }if(ogrTelNo.length()!=10){
+				 lblKayit[4].setText("Hata! Telefon numaraniz 10 haneli olmalı!");
 				 return ;
 			 }
 			    try {
