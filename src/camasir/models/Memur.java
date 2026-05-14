@@ -7,7 +7,7 @@ import camasir.ui.Memur_Paneli;
 public class Memur extends Kullanici {
 	private String personelID;
 
-	public Memur(String tC, String telNo, String tamIsim, String personelID) {
+	public Memur(String tC, String telNo, String tamIsim, String personelID) throws Exception{
 		super(tC, telNo, tamIsim);
 		this.personelID = personelID;
 	}

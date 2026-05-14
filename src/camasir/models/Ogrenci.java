@@ -10,9 +10,9 @@ public class Ogrenci extends Kullanici {
 	private String odaNo;
 	private int randevuHakki;
 
-	public Ogrenci(String tC, String telNo, String tamIsim, String odaNo, int randevuHakki) {
+	public Ogrenci(String tC, String telNo, String tamIsim, String odaNo, int randevuHakki) throws Exception{
 		super(tC, telNo, tamIsim);
-		this.odaNo = odaNo;
+		setOdaNo(odaNo);
 		this.randevuHakki = randevuHakki;
 	}
 

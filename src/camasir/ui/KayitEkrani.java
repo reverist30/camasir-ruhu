@@ -82,7 +82,7 @@ public class KayitEkrani extends JDialog {
 			String ogrTC = txtKayit[1].getText().trim();
 			String ogrOdaNo = txtKayit[2].getText().trim();
 			String ogrTelNo = txtKayit[3].getText().trim();
-			int blokIndex = secimKutusu.getSelectedIndex();
+		//	int blokIndex = secimKutusu.getSelectedIndex();
 
 			java.util.List<String> kayitliKullanicilar = camasir.logic.DosyaYoneticisi.getInstance().verileriOku(false);
 			boolean tcKayitliMi = false;
@@ -97,8 +97,8 @@ public class KayitEkrani extends JDialog {
 				lblKayit[2].setText("Hata! Bu TC numarası sistemde zaten kayıtlıdır.");
 				return;
 			}
-			
-			/*if(ogrTC.length() != 11) {
+			/*
+			if(ogrTC.length() != 11) {
 				lblKayit[4].setText("Hatalı Giriş! TC 11 haneli olmalı!"); 
 				return; 
 				} 
@@ -131,18 +131,18 @@ public class KayitEkrani extends JDialog {
 				lblKayit[4].setText("Hata! Telefon numaranız 10 haneli olmalı!"); 
 				return; 
 			}
-			*/ 
 			
+			*/
 			try {
-				Ogrenci yeniKayit = new Ogrenci(ogrIsim, ogrTC, secimKutusu.getSelectedItem() + "-" + ogrOdaNo,
-						ogrTelNo, 0);
+				Ogrenci yeniKayit = new Ogrenci(ogrTC, ogrTelNo, ogrIsim, secimKutusu.getSelectedItem() + "-" + ogrOdaNo,
+						 0);
 				String kaydedilecekVeri = ogrIsim + " - " + ogrTC + " - " + secimKutusu.getSelectedItem() + " - "
 						+ ogrOdaNo + " - " + ogrTelNo;
 				camasir.logic.DosyaYoneticisi.getInstance().veriyiKaydet(kaydedilecekVeri, false);
 				JOptionPane.showMessageDialog(this, "Kayıt başarıyla tamamlandı.");
 				this.dispose();
 			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(this, "Hata! " + ex.getMessage());
+				lblKayit[4].setText("Hatalı Giriş!" + ex.getMessage());
 				ex.printStackTrace(); // yazilimciya bildiri
 				return;
 			}

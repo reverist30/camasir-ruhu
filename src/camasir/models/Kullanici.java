@@ -5,11 +5,11 @@ public abstract class Kullanici {
 	private String telNo;
 	private String tamIsim;
 
-	public Kullanici(String tC, String telNo, String tamIsim) {
+	public Kullanici(String tC, String telNo, String tamIsim) throws Exception {
 		super();
-		TC = tC;
-		this.telNo = telNo;
-		this.tamIsim = tamIsim;
+		setTC(tC); // "this.tC = tC" yerine bunu yaz!
+	    setTelNo(telNo);
+	    setTamIsim(tamIsim);
 	}
 
 	public Kullanici() {
@@ -32,11 +32,11 @@ public abstract class Kullanici {
 		return telNo;
 	}
 
-	public void setTelNo(String telNo) {
+	public void setTelNo(String telNo) throws Exception{
 		if (telNo != null && telNo.length() == 10 && telNo.matches("\\d+")) {
 			this.telNo = telNo;
 		} else {
-			System.out.println("Telefon numarası 10 karakter olmak zorundadır!");
+			throw new Exception("Telefon numarası 10 karakter olmak zorundadır!");
 		}
 	}
 

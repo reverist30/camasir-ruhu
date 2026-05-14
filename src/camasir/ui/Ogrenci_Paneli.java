@@ -39,7 +39,7 @@ public class Ogrenci_Paneli extends JFrame {
 		this.add(headerPanel, BorderLayout.NORTH);
 		JButton btnCikis = new JButton("Çıkış Yap");
 		btnCikis.setBackground(new Color(231, 76, 60)); // Kırmizimsi bir renk
-		btnCikis.setForeground(Color.WHITE);
+		btnCikis.setForeground(Color.BLACK);
 
 		btnCikis.addActionListener(e -> {
 			this.dispose(); // Mevcut paneli kapat
@@ -56,6 +56,9 @@ public class Ogrenci_Paneli extends JFrame {
 			String saat = String.format("%02d:00", i + 9);
 			saatButonlari[i] = new JButton(saat);
 			saatButonlari[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+			saatButonlari[i].setForeground(Color.BLACK);
+			saatButonlari[i].setOpaque(true);
+			saatButonlari[i].setContentAreaFilled(true);
 
 			saatButonlari[i].addActionListener(e -> {
 				JButton basilanButon = (JButton) e.getSource();
@@ -118,15 +121,16 @@ public class Ogrenci_Paneli extends JFrame {
 	private void butonlariGuncelle() {
 		CamasirYonetim yonetim = new CamasirYonetim();
 		String secilenGun = (String) cbGunler.getSelectedItem();
+		
 
 		for (JButton btn : saatButonlari) {
 			String saat = btn.getText();
 			if (!yonetim.saatMusaitMi(secilenGun, saat)) {
 				btn.setBackground(Color.RED); // Doluysa kirmizi ve tiklanamaz
-				btn.setForeground(Color.WHITE);
+				btn.setForeground(Color.BLACK);
 			} else {
 				btn.setBackground(new Color(46, 204, 113)); // Bossa yesil ve tiklanabilir
-				btn.setForeground(Color.WHITE);
+				btn.setForeground(Color.BLACK);
 				btn.setEnabled(true);
 			}
 		}
