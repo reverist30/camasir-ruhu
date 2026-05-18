@@ -89,22 +89,15 @@ public class Ogrenci_Paneli extends JFrame {
 				}
 
 				// Makine secim ekranini ac
-				JOptionPane.showMessageDialog(this, "Randevu öncesi makine ayarlarınızı yapın.");
-				MakineKontrolPaneli makineEkrani = new MakineKontrolPaneli();
+				
+
+				
+				MakineKontrolPaneli makineEkrani = new MakineKontrolPaneli(aktifOgrenciTC, secilenGun, secilenSaat);
 				makineEkrani.setVisible(true);
+				
 
-				// Onay ve kayit
-				int onay = JOptionPane.showConfirmDialog(this,
-						secilenGun + " günü " + secilenSaat + " için randevuyu onaylıyor musunuz?", "Randevu Onayı",
-						JOptionPane.YES_NO_OPTION);
 
-				if (onay == JOptionPane.YES_OPTION) {
-					String kayitVerisi = aktifOgrenciTC + " | " + secilenGun + " | " + secilenSaat + " | "
-							+ LocalDateTime.now();
-					DosyaYoneticisi.getInstance().veriyiKaydet(kayitVerisi, true);
-					butonlariGuncelle();
-					JOptionPane.showMessageDialog(this, "Randevunuz başarıyla oluşturuldu.");
-				}
+
 			});
 			buttonPanel.add(saatButonlari[i]);
 		}

@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.time.LocalDateTime;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,6 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import camasir.logic.DosyaYoneticisi;
 import camasir.models.KurutmaMakinesi;
 import camasir.models.YikamaMakinesi;
 
@@ -25,6 +27,11 @@ public class MakineKontrolPaneli extends JFrame {
 	private YikamaMakinesi yikamaModel = new YikamaMakinesi();
 	private KurutmaMakinesi kurutmaModel = new KurutmaMakinesi(40, 30, 5, 0, "Standart", "Beyaz", "Dolap Kurulugu",
 			"Isi Pompali");
+	
+	private String gelenTC;
+    private String gelenGun;
+    private String gelenSaat;
+
 
 	// Ortak Bilesenler
 	private JComboBox<String> cbMakineTuru, cbMod;
@@ -38,7 +45,10 @@ public class MakineKontrolPaneli extends JFrame {
 	// Kurutmaya Ozel
 	private JComboBox<String> cbKurutmaDerecesi;
 
-	public MakineKontrolPaneli() {
+	public MakineKontrolPaneli(String tc, String gun, String saat) {
+    	this.gelenTC = tc;
+        this.gelenGun = gun;
+        this.gelenSaat = saat;
 		setTitle("Çamaşır Ruhu v1.0");
 		setSize(400, 500);
 		this.setResizable(false);
@@ -114,6 +124,20 @@ public class MakineKontrolPaneli extends JFrame {
 			if (cbMakineTuru.getSelectedIndex() == 0)
 				cbDevir.setSelectedItem(800);
 			JOptionPane.showMessageDialog(this, "Varsayılan ayarlar yüklendi.");
+			// Onay ve kayit
+			int onay = JOptionPane.showConfirmDialog(this,
+					gelenGun + " günü " + gelenSaat + " için randevuyu onaylıyor musunuz?", "Randevu Onayı",
+					JOptionPane.YES_NO_OPTION);
+
+			if (onay == JOptionPane.YES_OPTION) {
+				String kayitVerisi = gelenTC + " | " + gelenGun + " | " + gelenSaat + " | "
+						+ LocalDateTime.now();
+				DosyaYoneticisi.getInstance().veriyiKaydet(kayitVerisi, true);
+				
+				JOptionPane.showMessageDialog(this, "Randevunuz başarıyla oluşturuldu.");
+				butonlariGuncelle(); 
+			}
+			this.dispose();
 		});
 
 		btnBaslat.addActionListener(e -> {
@@ -126,12 +150,32 @@ public class MakineKontrolPaneli extends JFrame {
 				yikamaModel.setMod(mod);
 				yikamaModel.setDevir(devir);
 				JOptionPane.showMessageDialog(this, "Yıkama işlemi " + sicaklik + " derecede başlatıldı!");
+				
 			} else { // Kurutma
 				kurutmaModel.setSicaklik(sicaklik);
 				kurutmaModel.setMod(mod);
 				JOptionPane.showMessageDialog(this, "Kurutma işlemi başlatıldı!");
+				
 			}
+			// Onay ve kayit
+			int onay = JOptionPane.showConfirmDialog(this,
+					gelenGun + " günü " + gelenSaat + " için randevuyu onaylıyor musunuz?", "Randevu Onayı",
+					JOptionPane.YES_NO_OPTION);
+
+			if (onay == JOptionPane.YES_OPTION) {
+				String kayitVerisi = gelenTC + " | " + gelenGun + " | " + gelenSaat + " | "
+						+ LocalDateTime.now();
+				DosyaYoneticisi.getInstance().veriyiKaydet(kayitVerisi, true);
+				
+				JOptionPane.showMessageDialog(this, "Randevunuz başarıyla oluşturuldu.");
+				butonlariGuncelle(); // burada hata verdi neymis fonksiyon yokmus
+			}
+			this.dispose();
 		});
+	}
+
+	private void butonlariGuncelle() { // ben de fonksiyon yazdim
+		
 	}
 
 	// 1. Parametresiz (Hizli Ayar)
@@ -153,7 +197,7 @@ public class MakineKontrolPaneli extends JFrame {
 		}
 	}
 
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> new MakineKontrolPaneli().setVisible(true));
-	}
+	//public static void main(String[] args) {
+		//SwingUtilities.invokeLater(() -> new MakineKontrolPaneli().setVisible(true));
+	//}
 }
