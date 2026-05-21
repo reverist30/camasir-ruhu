@@ -92,7 +92,7 @@ public class Ogrenci_Paneli extends JFrame {
 				
 
 				
-				MakineKontrolPaneli makineEkrani = new MakineKontrolPaneli(aktifOgrenciTC, secilenGun, secilenSaat);
+				MakineKontrolPaneli makineEkrani = new MakineKontrolPaneli(aktifOgrenciTC, secilenGun, secilenSaat,this );
 				makineEkrani.setVisible(true);
 				
 
@@ -111,7 +111,7 @@ public class Ogrenci_Paneli extends JFrame {
 	}
 
 	// Dolu saatleri Kirmizi, bos saatleri Yesil yapan metot
-	private void butonlariGuncelle() {
+	public void butonlariGuncelle() {
 		CamasirYonetim yonetim = new CamasirYonetim();
 		String secilenGun = (String) cbGunler.getSelectedItem();
 		

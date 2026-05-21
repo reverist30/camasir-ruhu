@@ -31,6 +31,7 @@ public class MakineKontrolPaneli extends JFrame {
 	private String gelenTC;
     private String gelenGun;
     private String gelenSaat;
+    private Ogrenci_Paneli fonk;
 
 
 	// Ortak Bilesenler
@@ -45,10 +46,11 @@ public class MakineKontrolPaneli extends JFrame {
 	// Kurutmaya Ozel
 	private JComboBox<String> cbKurutmaDerecesi;
 
-	public MakineKontrolPaneli(String tc, String gun, String saat) {
+	public MakineKontrolPaneli(String tc, String gun, String saat, Ogrenci_Paneli fonk ) {
     	this.gelenTC = tc;
         this.gelenGun = gun;
         this.gelenSaat = saat;
+        this.fonk = fonk;
 		setTitle("Çamaşır Ruhu v1.0");
 		setSize(400, 500);
 		this.setResizable(false);
@@ -135,7 +137,7 @@ public class MakineKontrolPaneli extends JFrame {
 				DosyaYoneticisi.getInstance().veriyiKaydet(kayitVerisi, true);
 				
 				JOptionPane.showMessageDialog(this, "Randevunuz başarıyla oluşturuldu.");
-				butonlariGuncelle(); 
+				fonk.butonlariGuncelle(); 
 			}
 			this.dispose();
 		});
@@ -168,15 +170,12 @@ public class MakineKontrolPaneli extends JFrame {
 				DosyaYoneticisi.getInstance().veriyiKaydet(kayitVerisi, true);
 				
 				JOptionPane.showMessageDialog(this, "Randevunuz başarıyla oluşturuldu.");
-				butonlariGuncelle(); // burada hata verdi neymis fonksiyon yokmus
+				fonk.butonlariGuncelle(); // burada hata verdi neymis fonksiyon yokmus
 			}
 			this.dispose();
 		});
 	}
 
-	private void butonlariGuncelle() { // ben de fonksiyon yazdim
-		
-	}
 
 	// 1. Parametresiz (Hizli Ayar)
 	public void ayarla() {
